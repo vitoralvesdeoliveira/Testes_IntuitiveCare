@@ -15,6 +15,7 @@ class ANSWebScraper:
     def __init__(self):
         """Inicializa o scraper e cria o diretório de downloads caso não exista."""
         os.makedirs(self.DOWNLOAD_DIR, exist_ok=True)
+        os.makedirs(self.ZIP_DIR, exist_ok=True)
 
     def _get_page_content(self) -> BeautifulSoup:
         """Obtém o conteúdo HTML da página."""
@@ -56,8 +57,16 @@ class ANSWebScraper:
         
         for link in pdf_links:
             filename = link.split('/')[-1]
-            if self._download_file(link,filename):
-                print(f"{filename} baixado.")
+            print(filename)
+            if "Anexo_II" in filename:
+                standart_name = "Anexo_II.pdf"
+            elif "Anexo_I" in filename:
+                standart_name = "Anexo_I.pdf"
+            else:
+                #add log caso o nome do pdf mude
+                continue
+            if self._download_file(link,standart_name):
+                print(f"{filename} baixado como {standart_name}.")
             else:
                 print(f"{filename} não pode ser baixado.")
 
