@@ -8,7 +8,7 @@ from src.config import DATA_DIR
 class ANSWebScraper:
     """Realiza web scraping e baixa arquivos."""
     BASE_URL = 'https://www.gov.br/ans/pt-br/acesso-a-informacao/participacao-da-sociedade/atualizacao-do-rol-de-procedimentos'
-    ZIP_FILENAME = "Teste_VitorAlves.zip"
+    ZIP_FILENAME = "Teste_IntuitiveCare.zip"
     ZIP_DIR = DATA_DIR/"compressed"
     DOWNLOAD_DIR =  DATA_DIR/"raw"
 
@@ -57,7 +57,6 @@ class ANSWebScraper:
         
         for link in pdf_links:
             filename = link.split('/')[-1]
-            print(filename)
             if "Anexo_II" in filename:
                 standart_name = "Anexo_II.pdf"
             elif "Anexo_I" in filename:
