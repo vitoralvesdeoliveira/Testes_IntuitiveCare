@@ -57,7 +57,7 @@ class ANSWebScraper:
         
         for link in pdf_links:
             filename = link.split('/')[-1]
-            print(filename)
+
             if "Anexo_II" in filename:
                 standart_name = "Anexo_II.pdf"
             elif "Anexo_I" in filename:
